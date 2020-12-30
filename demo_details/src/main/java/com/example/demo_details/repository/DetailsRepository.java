@@ -1,0 +1,12 @@
+package com.example.demo_details.repository;
+
+import com.example.demo_details.dao.DetailsDAO;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+public interface DetailsRepository extends JpaRepository<DetailsDAO, Long> {
+    // 아래의 쿼리는 prodcode table과 join하는 쿼리로 변경해야 한다.
+    @Query(nativeQuery = true, value = "select * from details where prod_code = ?1")
+    DetailsDAO findByProdCode(String prodCode);
+}
