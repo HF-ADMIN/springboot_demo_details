@@ -35,7 +35,8 @@ public class DetailsService {
         // prodecode를 입력받아서 해당 제품의 Detail 정보를 가져온다.
         try {
             DetailsDAO detailsDAO = repository.findByProdCode(prodCode);
-            response.setProdName(detailsDAO.getProdCodeDAO().getProdName());
+            System.out.println("              detailsDAO : " + detailsDAO.toString());
+            response.setProdName(detailsDAO.getProdName());
             response.setDetailsImg(detailsDAO.getImgPath());
             response.setResultCode(200);
         }catch(Exception e) {

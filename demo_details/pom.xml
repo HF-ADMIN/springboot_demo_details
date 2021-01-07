@@ -98,13 +98,16 @@
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 
-		<!-- Jaeger Opentracing dependencies -->
+		
+		<!-- 지금은 사용 안함 -->
 		<!--dependency>
 			<groupId>com.uber.jaeger</groupId>
 			<artifactId>jaeger-core</artifactId>
 			<version>0.18.0</version>
 		</dependency-->
-		<dependency>
+
+		<!-- Jaeger Opentracing dependencies -->
+		<!--dependency>
 			<groupId>io.opentracing.contrib</groupId>
 			<artifactId>opentracing-spring-jaeger-web-starter</artifactId>
 			<version>3.1.2</version>
@@ -113,7 +116,7 @@
 			<groupId>io.opentracing.contrib</groupId>
 			<artifactId>opentracing-spring-cloud-starter</artifactId>
 			<version>0.5.5</version>
-		</dependency>
+		</dependency-->
 
 		<!-- https://mvnrepository.com/artifact/org.json/json -->
 		<dependency>

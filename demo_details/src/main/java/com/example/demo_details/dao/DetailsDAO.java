@@ -21,32 +21,43 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="details")
+@Table(name = "details")
 public class DetailsDAO {
-    @Id 
-    @Column(name="id", nullable=false)
+    @Id
+    @Column(name = "id", nullable = false)
     @GeneratedValue
     private Integer id;
 
-    @Column(name="prod_code", nullable=false, length=20)
+    @Column(name = "prod_code", nullable = false, length = 20)
     private String prodCode;
 
-    @Column(name="img_path", nullable=true, length=100)
+    @Column(name = "img_path", nullable = true, length = 100)
     private String imgPath;
 
-    @Column(name="create_date", nullable=true)
+    @Column(name = "create_date", nullable = true)
     private Date createDate;
 
-    @OneToOne(cascade={CascadeType.ALL})
-    @JoinColumn(name="prod_code", insertable = false)
-    private ProdCodeDAO prodCodeDAO;
+    @Column(name = "prod_name", nullable = true, length = 20)
+    private String prodName;
 
-    public ProdCodeDAO getProdCodeDAO() {
-        return prodCodeDAO;
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return String.valueOf(id + ", " + prodCode + ", " + imgPath + ", " + createDate + ", " +prodName);
     }
 
-    public void setProdCodeDAO(ProdCodeDAO prodCodeDAO) {
-        this.prodCodeDAO = prodCodeDAO;
-    }
+    // @OneToOne(cascade={CascadeType.ALL})
+    // @JoinColumn(name="prod_code", insertable = false)
+    // private ProdCodeDAO prodCodeDAO;
+
+    // public ProdCodeDAO getProdCodeDAO() {
+    //     return prodCodeDAO;
+    // }
+
+    // public void setProdCodeDAO(ProdCodeDAO prodCodeDAO) {
+    //     this.prodCodeDAO = prodCodeDAO;
+    // }
+
+    
 }
 
