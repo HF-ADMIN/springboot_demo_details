@@ -32,7 +32,7 @@ public class DetailsController {
      * @throws     Exception
      * @description GET Request를 받아서 전체 Productpage 정보를 조회하는 메소드
      */
-    @RequestMapping(value="/DetailsInfo", method=RequestMethod.GET)
+    @RequestMapping(value="/detailsInfo", method=RequestMethod.GET)
     public ResponseEntity<DetailsDTO.Response> getDetailsInfo(@RequestHeader HttpHeaders requestHeader,  @RequestParam String prodCode) throws Exception{
         DetailsDTO.Response responseBody = null;
         try {
