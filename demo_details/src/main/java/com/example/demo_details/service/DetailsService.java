@@ -1,8 +1,11 @@
 package com.example.demo_details.service;
 
+import java.io.File;
+
 import com.example.demo_details.dao.DetailsDAO;
 import com.example.demo_details.dto.DetailsDTO;
 import com.example.demo_details.repository.DetailsRepository;
+import com.example.demo_details.util.CommUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +40,10 @@ public class DetailsService {
             DetailsDAO detailsDAO = repository.findByProdCode(prodCode);
             System.out.println("              detailsDAO : " + detailsDAO.toString());
             response.setProdName(detailsDAO.getProdName());
-            response.setDetailsImg(detailsDAO.getImgPath());
+            // Details File to String
+            File file = new File(detailsDAO.getImgPath());
+            String imgString = CommUtil.fileToString(file);
+            response.setDetailsImg(imgString);
             response.setResultCode(200);
         }catch(Exception e) {
             e.printStackTrace();
