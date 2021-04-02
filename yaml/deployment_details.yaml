@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-details-deployment
+  namespace: demo-tinfo
+  labels:
+    app: springboot-details
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springboot-details
+  template:
+    metadata:
+      labels:
+        app: springboot-details
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker1
+      volumes:
+        - name: tz-seoul
+          hostPath:
+            path: /usr/share/zoneinfo/Asia/Seoul
+        - name: details-storage
+          persistentVolumeClaim:
+            claimName: details-pvc-volume
+      containers:
+      - name: springboot-details-container
+        image: ${도커계정}/springboot-demo-details:latest
+        ports:
+        - containerPort: 8082
+        volumeMounts:
+          - name: tz-seoul
+            mountPath: /etc/localtime
+          - name: details-storage
+            mountPath: /mnt/demo/data
+        resources:
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 150m
